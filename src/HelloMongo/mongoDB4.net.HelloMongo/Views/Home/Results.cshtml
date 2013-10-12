@@ -1,0 +1,31 @@
+﻿@model IEnumerable<mongoDB4.net.HelloMongo.Models.Comment>
+@{
+    ViewBag.Title = "Results";
+}
+
+<link href="~/Content/site.css" rel="stylesheet" />
+
+<h2>Results</h2>
+
+<table>
+    <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Date Created</td>
+      <td>Comment Text</td>
+    </tr>
+
+    @foreach (var comment in Model)
+    {
+        <tr>
+            <td>@comment.Name</td>
+            <td>@comment.Email</td>
+            <td>@comment.DateCreated</td>
+            <td>@comment.CommentText</td>
+        </tr>
+    }
+</table>
+
+<div>
+    @Html.ActionLink("Back to Form", "Index")
+</div>

@@ -1,0 +1,50 @@
+﻿@model mongoDB4.net.HelloMongo.Models.Comment
+
+@{
+    ViewBag.Title = "Enter Comment";
+}
+
+<link href="~/Content/site.css" rel="stylesheet" />
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Comment</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CommentText)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CommentText)
+            @Html.ValidationMessageFor(model => model.CommentText)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("View Submissions", "Results")
+</div>
