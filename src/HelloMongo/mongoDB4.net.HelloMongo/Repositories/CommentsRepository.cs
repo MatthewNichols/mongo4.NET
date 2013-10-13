@@ -43,9 +43,11 @@ namespace mongoDB4.net.HelloMongo.Repositories
             {
                 if (_defaultCollection == null)
                 {
-                    var mongoClient = new MongoClient(_connectionString);
+                    var mongoUrl = new MongoUrl(_connectionString);
+                    var mongoClient = new MongoClient(mongoUrl);
                     var mongoServer = mongoClient.GetServer();
-                    var mongoDatabase = mongoServer.GetDatabase("helloMongo");
+                    var mongoDatabase = mongoServer.GetDatabase(mongoUrl.DatabaseName);
+                    
                     _defaultCollection = mongoDatabase.GetCollection<Comment>("comments");
                 }
 
